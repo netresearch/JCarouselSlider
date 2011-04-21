@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category           Netresearch
+ * @package            Netresearch_JCarouselSlider
+ * @author               Dandy Umlauft <dandy.umlauft@netresearch.de>
+ * @copyright           Copyright (c) 2011 Dandy Umlauft | Netresearch GmbH & Co.KG (http://www.netresearch.de)
+ * @license               http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Netresearch_JCarouselSlider>
+			<version>0.0.1</version>
+		</Netresearch_JCarouselSlider>
+	</modules>
+	<global>
+		<blocks>
+			<jcslider>
+				<class>Netresearch_JCarouselSlider_Block</class>
+			</jcslider>
+		</blocks>
+		<helpers>
+			<jcslider>
+				<class>Netresearch_JCarouselSlider_Helper</class>
+			</jcslider>
+		</helpers>
+        <models>
+            <jcslider>
+                <class>Netresearch_JCarouselSlider_Model</class>
+            </jcslider>
+        </models>
+	</global>
+    <frontend>
+        <layout>
+            <updates>
+                <jcslider>
+                    <file>jcslider.xml</file>
+                </jcslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Netresearch_JCarouselSlider>
+                    <files>
+                        <default>Netresearch_JCarouselSlider.csv</default>
+                    </files>
+                </Netresearch_JCarouselSlider>
+            </modules>
+        </translate>
+    </frontend>
+	<adminhtml>
+		<acl>
+			<resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+                                        <jcslidertab>
+                                            <title>JCarousel Slider</title>
+                                        </jcslidertab>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+       <layout>
+            <updates>
+                <jcslider>
+                    <file>jcslider.xml</file>
+                </jcslider>
+            </updates> 
+        </layout>
+        <translate>
+            <modules>
+                <Netresearch_JCarouselSlider>
+                    <files>
+                        <default>Netresearch_JCarouselSlider.csv</default>
+                    </files>
+                </Netresearch_JCarouselSlider>
+            </modules>
+        </translate>
+	</adminhtml>
+    <default>
+        <jcslider>
+            <jcrelatedproducts>
+                <jsactivation>1</jsactivation>
+                <jsmaxproducts>100</jsmaxproducts>
+                <jsmaxproductsscroll>1</jsmaxproductsscroll>
+                <jsscrollspeed>1000</jsscrollspeed>
+                <jcalignment>horizontal</jcalignment>
+                <jscircle>1</jscircle>
+                <jsautoscrolldirection>0</jsautoscrolldirection>
+                <jsautoscrolling>2</jsautoscrolling>
+                <jsscrolleffekt>1</jsscrolleffekt>
+            </jcrelatedproducts>
+            <jcupsells>
+                <jsactivation>1</jsactivation>
+                <jsmaxproducts>100</jsmaxproducts>
+                <jsmaxproductsscroll>1</jsmaxproductsscroll>
+                <jsscrollspeed>1000</jsscrollspeed>
+                <jcalignment>horizontal</jcalignment>
+                <jscircle>1</jscircle>
+                <jsautoscrolldirection>0</jsautoscrolldirection>
+                <jsautoscrolling>2</jsautoscrolling>
+                <jsscrolleffekt>1</jsscrolleffekt>
+            </jcupsells>
+            <jccrossells>
+                <jsactivation>1</jsactivation>
+                <jsmaxproducts>100</jsmaxproducts>
+                <jsmaxproductsscroll>1</jsmaxproductsscroll>
+                <jsscrollspeed>1000</jsscrollspeed>
+                <jcalignment>horizontal</jcalignment>
+                <jscircle>1</jscircle>
+                <jsautoscrolldirection>0</jsautoscrolldirection>
+                <jsautoscrolling>2</jsautoscrolling>
+                <jsscrolleffekt>1</jsscrolleffekt>
+            </jccrossells>
+        </jcslider>
+    </default>
+</config>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * @package            Netresearch_JCarouselSlider
+ * @author               Dandy Umlauft <dandy.umlauft@netresearch.de>
+ * @copyright 2010  Dandy Umlauft | Netresearch GmbH & Co.KG (http://www.netresearch.de)
+ * @license               http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<layout>
+    <checkout_cart_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/jcslider.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/jcslider/jquery-1.4.2.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jcslider/jquery.jcarousel.min.js</name></action>
+        </reference>
+        <reference name="content">
+            <remove name="checkout.cart.crosssell"/>
+             <block type="jcslider/checkout_cart_crosssell" name="jcslider.crosssell" as="jcslidercrossell" template="jcslider/checkout/cart/crosssell.phtml"/>
+        </reference>
+    </checkout_cart_index>
+    <catalog_product_view>     
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/jcslider.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/jcslider/jquery-1.4.2.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jcslider/jquery.jcarousel.min.js</name></action>
+        </reference>
+        <reference name="content">         
+            <remove name="product.info.upsell"/>
+            <block type="jcslider/catalog_product_list_upsell" name="jcslider.upsell" as="jcsliderupsell" template="jcslider/catalog/product/list/upsell.phtml" />
+        </reference>   
+        <reference name="right">
+            <remove name="catalog.product.related"/>
+            <block type="jcslider/catalog_product_list_related" name="jcslider.related" as="jcsliderrelated" template="jcslider/catalog/product/list/related.phtml" />
+            <!--<block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related.phtml"/>-->
+        </reference>-->
+    </catalog_product_view>
+</layout>

@@ -1,0 +1,197 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category           Netresearch
+ * @package            Netresearch_JCarouselSlider
+ * @author               Dandy Umlauft <dandy.umlauft@netresearch.de>
+ * @copyright           Copyright (c) 2011 Dandy Umlauft | Netresearch GmbH & Co.KG (http://www.netresearch.de)
+ * @license               http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+    $jcRelated = $this->jcRelated;
+    $SliderActivation = $jcRelated->getSliderActivation();
+    $ItemCountScroll = $jcRelated->getItemCountScroll();
+    $ScrollSpeed = $jcRelated->getScrollSpeed();
+    $SliderAlignment = $jcRelated->getSliderAlignment();
+    $SliderCircular = $jcRelated->getSliderCircular();
+    $AutoScrollTime = $jcRelated->getAutoScrollTime();
+    $DisplayDirection = $jcRelated->getDisplayDirection();
+    $SliderScrollEffekt = $jcRelated->getSliderScrollEffekt();
+?>
+
+<?php if('0'== $SliderActivation) :?> 
+<!--
+    Keine Aktivierung, der normale Inhalt wird geladen
+-->
+    <?php if($this->getItems()->getSize()): ?>
+    <div class="box base-mini mini-related-items">
+        <div class="head">
+            <h4><?php echo $this->__('Related Products') ?></h4>
+        </div>
+        <div class="content">
+            <p><strong><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this);return false;"><?php echo $this->__('select all') ?></a></strong></p>
+            <ol>
+            <?php foreach($this->getItems() as $_item): ?>
+            <li<?php if($_item->isComposite() || !$_item->isSaleable()): ?> class="super-products"<?php endif; ?>>
+                <div class="product-images">
+                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                    <span class="checkbox-container">
+                    <?php if (!$_item->getRequiredOptions()): ?>
+                        <input type="checkbox" class="related-checkbox left" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                    <?php endif; ?>
+                    </span>
+                <?php else: ?>
+                    <span class="checkbox-container">&nbsp;</span>
+                <?php endif; ?>
+                    <a href="<?php echo $_item->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="50" height="50" /></a>
+                </div>
+                <div class="product-details">
+                        <a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
+                        <?php echo $this->getPriceHtml($_item, true) ?>
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a>
+                        <?php endif; ?>
+                </div>
+            </li>
+            <?php endforeach ?>
+            </ol>
+        </div>
+    </div>
+    <?php endif ?>
+<?php else: ?>
+<!--
+    Aktivierung, der neue Inhalt wird geladen
+-->
+    <script type="text/javascript">
+        jQuery.easing['BounceEaseOut'] = function(p, t, b, c, d) {
+            if ((t/=d) < (1/2.75)) {
+                return c*(7.5625*t*t) + b;
+            } else if (t < (2/2.75)) {
+                return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+            } else if (t < (2.5/2.75)) {
+                return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+            } else {
+                return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+            }
+        };
+
+        function mycarousel_initCallback(carousel){
+            // Disable autoscrolling if the user clicks the prev or next button.
+            carousel.buttonNext.bind('click', function() {
+                carousel.startAuto(0);
+            });
+            carousel.buttonPrev.bind('click', function() {
+                carousel.startAuto(0);
+            });
+                
+            // Pause autoscrolling if the user moves with the cursor over the clip.
+            carousel.clip.hover(function() {carousel.stopAuto();}, function() {carousel.startAuto();});
+        }; 
+
+        jQuery(document).ready(function() {
+            jQuery('#mycarousel-related').jcarousel({
+                <?php echo '1'==$SliderScrollEffekt ? 'easing: \'BounceEaseOut\'' : 'easing: \'swing\'' ?>
+                ,animation:<?php echo $ScrollSpeed ?>
+                <?php echo '1'==$SliderCircular ? ',wrap: \'circular\'' : '' ?>
+                <?php echo 'vertical'==$SliderAlignment ? ',vertical: true' : '' ?>
+                ,scroll:<?php echo $ItemCountScroll ?>
+                <?php echo '0' != $AutoScrollTime ? ',auto:'.$AutoScrollTime.',initCallback: mycarousel_initCallback' : '' ?>
+                <?php echo '0' != $AutoScrollTime && '1'!=$SliderCircular ? ',wrap: \'last\'' : '' ?>
+                <?php echo '1'==$DisplayDirection ? ',rtl: true' : '' ?>
+            });
+        });
+    </script>
+
+    <?php if($this->getItems()->getSize()): ?>
+    <div id="slider-related" class="box base-mini mini-related-items">
+        <div class="head">
+            <h4><?php echo $this->__('JCSLIDER Related Products') ?></h4>
+        </div>
+        <div class="content">
+            <p><strong><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this);return false;"><?php echo $this->__('select all') ?></a></strong></p>
+            <div class="jcarousel-skin-tango jcarousel-skin-tango-related">
+                <div class="jcarousel-container jcarousel-container-horizontal" style="position: relative; display: block;">
+                    <div class="jcarousel-clip jcarousel-clip-horizontal" style="overflow: hidden; position: relative;">
+                        <ul id="mycarousel-related" class="jcarousel-skin-tango">
+                            <?php foreach($this->getItems() as $_item): ?>
+                            <li<?php if($_item->isComposite() || !$_item->isSaleable()): ?> class="super-products"<?php endif; ?>>
+                                <div class="product-images">
+                                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                                    <span class="checkbox-container">
+                                    <?php if (!$_item->getRequiredOptions()): ?>
+                                        <input type="checkbox" class="related-checkbox left" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                                    <?php endif; ?>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="checkbox-container">&nbsp;</span>
+                                <?php endif; ?>
+                                    <a href="<?php echo $_item->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="50" height="50" /></a>
+                                </div>
+                                <div class="product-details">
+                                        <a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
+                                        <?php echo $this->getPriceHtml($_item, true) ?>
+                                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-cart"><?php echo $this->__('Add to Wishlist') ?></a>
+                                        <?php endif; ?>
+                                </div>
+                            </li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                        <div class="jcarousel-prev" style="display: block;"></div>
+                        <div class="jcarousel-next" style="display: block;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif ?>
+    
+<?php endif; ?>
+
+
+<script type="text/javascript">
+<!--
+$$('.related-checkbox').each(function(elem){
+    Event.observe(elem, 'click', addRelatedToProduct)
+});
+
+var relatedProductsCheckFlag = false;
+function selectAllRelated(txt){
+    if (relatedProductsCheckFlag == false) {
+        $$('.related-checkbox').each(function(elem){
+            elem.checked = true;
+        });
+        relatedProductsCheckFlag = true;
+        txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+    } else {
+        $$('.related-checkbox').each(function(elem){
+            elem.checked = false;
+        });
+        relatedProductsCheckFlag = false;
+        txt.innerHTML="<?php echo $this->__('select all') ?>";
+    }
+    addRelatedToProduct();
+}
+
+function addRelatedToProduct(){
+    var checkboxes = $$('.related-checkbox');
+    var values = [];
+    for(var i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].checked) values.push(checkboxes[i].value);
+    }
+    if($('related-products-field')){
+        $('related-products-field').value = values.join(',');
+    }
+}
+//-->
+</script>

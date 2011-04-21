@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category           Netresearch
+ * @package            Netresearch_JCarouselSlider
+ * @author               Dandy Umlauft <dandy.umlauft@netresearch.de>
+ * @copyright           Copyright (c) 2011 Dandy Umlauft | Netresearch GmbH & Co.KG (http://www.netresearch.de)
+ * @license               http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <tabs>
+        <jcslidertab translate="label" module="jcslider">
+            <label>JCarousel Slider</label>
+            <sort_order>0</sort_order>
+        </jcslidertab>
+    </tabs>
+    <sections>
+        <jcslider translate="label" module="jcslider">
+            <label>JCarousel Slider</label>
+            <class>jcarousel-section</class>
+            <header_css>jcarousel-header</header_css>
+            <tab>general</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <jcinformation translate="label">
+                    <label>Information about Netresearch JCarousel Slider</label>
+                    <frontend_model>jcslider/system_config_form_promotionGroupRenderer</frontend_model>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jsoptionrenderer translate="label">
+                            <frontend_model>jcslider/system_config_form_field_promotionFieldRenderer</frontend_model>
+                            <parameters>
+                                <iframeurl>http://www.netresearch.de/</iframeurl>
+                                <iframeheight>400px</iframeheight>
+                            </parameters>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsoptionrenderer>
+                    </fields>
+                </jcinformation>
+                <jcrelatedproducts translate="label">
+                    <label>Related Products</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jsactivation>
+                            <label>Activation</label>
+                            <comment>Enable or disable the JCSlider.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsactivation>
+                        <jsmaxproducts translate="label">
+                            <label>Number of products</label>
+                            <comment>If the field is empty, (if any) at least one product is displayed.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproducts>
+                        <jsmaxproductsscroll translate="label">
+                            <label>How many products are to be scrolled?</label>
+                            <comment>If the field is empty, at least one product is scrolled.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproductsscroll>
+                        <jsscrollspeed translate="label">
+                            <label>How fast will the products be scrolled?</label>
+                            <comment>Time in milliseconds. If the field is empty, the speed 1s. / 1s = 1000ms</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>10000</max>
+                                <step>250</step>
+                                <label>ms.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrollspeed>
+                        <jcalignment translate="label">
+                            <label>How is the slider appear?</label>
+                            <comment>The slider is displayed vertically or horizontally.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>jcslider/source_displayAction</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jcalignment>
+                        <jscircle>
+                            <label>Should be started from the front to the display of the last product?</label>
+                            <comment>There is no beginning and no end.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jscircle>
+                        <jsautoscrolling>
+                            <label>Autoscrolling</label>
+                            <comment>Time in seconds. If one was added to 0 or the field is empty, there is no automatic scrolling of the display.</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>30</max>
+                                <step>0.5</step>
+                                <label>sec.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolling>
+                        <jsautoscrolldirection>
+                            <label>Display direction right-to-left</label>
+                            <comment>This field determines whether the products will be displayed from right to left (true). When the autoscroll is set, the products will be scrolled from right to left.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolldirection>
+                        <jsscrolleffekt>
+                            <label>Scroll with spring effect?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrolleffekt>
+                    </fields>
+                </jcrelatedproducts>
+                <jcupsells translate="label">
+                    <label>Up-sells</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jsactivation>
+                            <label>Activation</label>
+                            <comment>Enable or disable the JCSlider.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsactivation>
+                        <jsmaxproducts translate="label">
+                            <label>Number of products</label>
+                            <comment>If the field is empty, (if any) at least one product is displayed.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproducts>
+                        <jsmaxproductsscroll translate="label">
+                            <label>How many products are to be scrolled?</label>
+                            <comment>If the field is empty, at least one product is scrolled.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproductsscroll>
+                        <jsscrollspeed translate="label">
+                            <label>How fast will the products be scrolled?</label>
+                            <comment>Time in milliseconds. If the field is empty, the speed 1s. / 1s = 1000ms</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>10000</max>
+                                <step>250</step>
+                                <label>ms.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrollspeed>
+                        <jcalignment translate="label">
+                            <label>How is the slider appear?</label>
+                            <comment>The slider is displayed vertically or horizontally.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>jcslider/source_displayAction</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jcalignment>
+                        <jscircle>
+                            <label>Should be started from the front to the display of the last product?</label>
+                            <comment>There is no beginning and no end.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jscircle>
+                        <jsautoscrolling>
+                            <label>Autoscrolling</label>
+                            <comment>Time in seconds. If one was added to 0 or the field is empty, there is no automatic scrolling of the display.</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>30</max>
+                                <step>0.5</step>
+                                <label>sec.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolling>
+                        <jsautoscrolldirection>
+                            <label>Display direction right-to-left</label>
+                            <comment>This field determines whether the products will be displayed from right to left (true). When the autoscroll is set, the products will be scrolled from right to left.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolldirection>
+                        <jsscrolleffekt>
+                            <label>Scroll with spring effect?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrolleffekt>
+                    </fields>
+                </jcupsells>
+                <jccrossells translate="label">
+                    <label>Cross-sells</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jsactivation>
+                            <label>Activation</label>
+                            <comment>Enable or disable the JCSlider.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsactivation>
+                        <jsmaxproducts translate="label">
+                            <label>Number of products</label>
+                            <comment>If the field is empty, (if any) at least one product is displayed.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproducts>
+                        <jsmaxproductsscroll translate="label">
+                            <label>How many products are to be scrolled?</label>
+                            <comment>If the field is empty, at least one product is scrolled.</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits validate-zero-or-greater</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsmaxproductsscroll>
+                        <jsscrollspeed translate="label">
+                            <label>How fast will the products be scrolled?</label>
+                            <comment>Time in milliseconds. If the field is empty, the speed 1s. / 1s = 1000ms</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>10000</max>
+                                <step>250</step>
+                                <label>ms.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrollspeed>
+                        <jcalignment translate="label">
+                            <label>How is the slider appear?</label>
+                            <comment>The slider is displayed vertically or horizontally.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>jcslider/source_displayAction</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jcalignment>
+                        <jscircle>
+                            <label>Should be started from the front to the display of the last product?</label>
+                            <comment>There is no beginning and no end.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jscircle>
+                        <jsautoscrolling>
+                            <label>Autoscrolling</label>
+                            <comment>Time in seconds. If one was added to 0 or the field is empty, there is no automatic scrolling of the display.</comment>
+                            <frontend_model>jcslider/system_config_form_field_slidingregulation</frontend_model>
+                            <parameters>
+                                <min>0</min>
+                                <max>30</max>
+                                <step>0.5</step>
+                                <label>sec.</label>
+                                <skin>plastic</skin><!--blue, plastic, round_plastic, round-->
+                            </parameters>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolling>
+                        <jsautoscrolldirection>
+                            <label>Display direction right-to-left</label>
+                            <comment>This field determines whether the products will be displayed from right to left (true). When the autoscroll is set, the products will be scrolled from right to left.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsautoscrolldirection>
+                        <jsscrolleffekt>
+                            <label>Scroll with spring effect?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jsscrolleffekt>
+                    </fields>
+                </jccrossells>
+            </groups>
+        </jcslider>
+    </sections>
+</config>

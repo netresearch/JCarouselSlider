@@ -1,0 +1,307 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category           Netresearch
+ * @package            Netresearch_JCarouselSlider
+ * @author               Dandy Umlauft <dandy.umlauft@netresearch.de>
+ * @copyright           Copyright (c) 2011 Dandy Umlauft | Netresearch GmbH & Co.KG (http://www.netresearch.de)
+ * @license               http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/*************
+****Normal*****************************************************************************************
+**************/
+.jslider .jslider-bg i,
+.jslider .jslider-pointer{ 
+    background: url("/skin/adminhtml/default/default/jcslider/images/jslider.png") no-repeat scroll 0 0 transparent;
+}
+
+.jslider{     
+    display: block;
+    font-family: Arial,sans-serif;
+    height: 19px;
+    margin-top: 9px;
+    position: relative;
+    top: 5px;
+    width: 100%;
+}
+
+.jslider table{
+    border: 0 none;
+    border-collapse: collapse;
+    width: 100%;
+ }
+ 
+.jslider td,
+.jslider th{
+    border: 0 none;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.jslider table,
+.jslider table tr,
+.jslider table tr td{
+    vertical-align: top;
+    width: 100%;
+}
+
+.jslider .jslider-bg{
+    position: relative;
+}
+
+.jslider .jslider-bg i{
+    font-size: 0;
+    height: 5px;
+    position: absolute;
+    top: 0;
+}
+
+.jslider .jslider-bg .l{
+    background-position: 0 0;
+    left: 0;
+    width: 50%;
+}
+
+.jslider .jslider-bg .r{
+    background-position: right 0;
+    left: 50%;
+    width: 50%;
+}
+
+.jslider .jslider-bg .v{
+    background-position: 0 -20px;
+    height: 5px;
+    left: 20%;
+    position: absolute;
+    top: 0;
+    width: 60%;
+}
+
+.jslider .jslider-pointer{
+    background-position: 0 -40px;
+    cursor: pointer;
+    height: 15px;
+    left: 20%;
+    margin-left: -6px;
+    position: absolute;
+    top: -4px;
+    width: 13px;
+}
+
+.jslider .jslider-pointer-hover{
+    background-position: -20px -40px;
+}
+
+.jslider .jslider-pointer-to{
+    left: 80%;
+}
+
+.jslider .jslider-label{
+    color: black;
+    font-size: 9px;
+    left: 0;
+    line-height: 12px;
+    opacity: 0.4;
+    padding: 0 2px;
+    position: absolute;
+    top: -18px;
+    white-space: nowrap;
+}
+
+.jslider .jslider-label-to{
+    left: auto;
+    right: 0;
+}
+
+.jslider .jslider-value{
+    -moz-border-radius: 2px 2px 2px 2px;
+    background: none repeat scroll 0 0 white;
+    font-size: 9px;
+    left: 20%;
+    line-height: 12px;
+    padding: 1px 2px 0;
+    position: absolute;
+    top: -19px;
+    white-space: nowrap;
+}
+
+.jslider .jslider-value-to{
+    left: 80%;
+}
+
+.jslider .jslider-label small,
+.jslider .jslider-value small{
+    position: relative;
+    top: -0.4em;
+}
+
+.jslider .jslider-scale{
+    position: relative;
+    top: 9px;
+}
+
+.jslider .jslider-scale span{
+    border-left: 1px solid #999999;
+    font-size: 0;
+    height: 5px;
+    position: absolute;
+}
+
+.jslider .jslider-scale ins{
+    color: #999999;
+    font-size: 9px;
+    left: 0;
+    position: absolute;
+    text-decoration: none;
+    top: 5px;
+}
+
+.jslider-single .jslider-pointer-to,
+.jslider-single .jslider-value-to,
+.jslider-single .jslider-bg .v,
+.jslider-limitless .jslider-label{
+    display:none;
+}
+
+
+/************
+****SKINS*****************************************************************************************
+*************/
+
+/*PLASTIC*/
+.jslider_plastic .jslider-bg i,
+.jslider_plastic .jslider-pointer{
+    background-image: url("../images/jslider.plastic.png");
+}
+
+/*ROUND*/
+.jslider_round .jslider-bg i,
+.jslider_round .jslider-pointer{
+    background-image: url("../images/jslider.round.png");
+}
+
+.jslider_round .jslider-pointer{
+    width: 17px;
+    height: 17px;
+    top: -6px;
+    margin-left: -8px;
+}
+
+/*ROUND_PLASTIC*/
+.jslider_round_plastic .jslider-bg i,
+.jslider_round_plastic .jslider-pointer{
+    background-image: url("../images/jslider.round.plastic.png");
+}
+
+.jslider_round_plastic .jslider-pointer {
+    width: 18px;
+    height: 18px;
+    top: -7px;
+    margin-left: -8px;
+}
+
+/*BLUE*/
+.jslider_blue .jslider-bg i,
+.jslider_blue .jslider-pointer{
+    background-image: url("../images/jslider.blue.png");
+}
+  
+
+/**********
+****IE6*****************************************************************************************
+***********/
+*html .jslider .jslider-bg .l,
+*html .jslider .jslider-bg .r,
+*html .jslider .jslider-bg .v,
+*html .jslider .jslider-pointer{
+    background-image: none;
+    overflow: hidden;
+}
+
+*html .jslider .jslider-bg .l i,
+*html .jslider .jslider-bg .r i,
+*html .jslider .jslider-bg .v i,
+*html .jslider .jslider-pointer i{
+    position: absolute;
+    width: 500px;
+    height: 60px;
+    background:none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='skin/adminhtml/default/default/jcslider/images/jslider.png');
+}
+  
+*html .jslider .jslider-bg .l i{
+    left: 0;
+    top: 0;
+}
+
+*html .jslider .jslider-bg .r i{
+    right: 0;
+    top: 0;
+}  
+
+*html .jslider .jslider-bg .v i{
+    left: 0;
+    top: -20px;
+}
+  
+*html .jslider .jslider-pointer i{
+    left: 0;
+    top: -40px;
+}
+
+*html .jslider .jslider-pointer-hover i{
+    left: -20px;
+    top: -40px;
+}
+
+/**************
+****IE6_SKINS*****************************************************************************************
+***************/
+
+/*PLASTIC*/
+*html .jslider_plastic .jslider-bg .l i,
+*html .jslider_plastic .jslider-bg .r i,
+*html .jslider_plastic .jslider-bg .v i,
+*html .jslider_plastic .jslider-pointer i{
+    background:none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='skin/adminhtml/default/default/jcslider/images/jslider.plastic.png');
+}
+
+/*ROUND*/
+*html .jslider_round .jslider-bg .l i,
+*html .jslider_round .jslider-bg .r i,
+*html .jslider_round .jslider-bg .v i,
+*html .jslider_round .jslider-pointer i{
+    background:none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='skin/adminhtml/default/default/jcslider/images/jslider.round.png');
+}
+
+/*ROUND_PLASTIC*/
+*html .jslider_round_plastic .jslider-bg .l i,
+*html .jslider_round_plastic .jslider-bg .r i,
+*html .jslider_round_plastic .jslider-bg .v i,
+*html .jslider_round_plastic .jslider-pointer i{
+    background:none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='skin/adminhtml/default/default/jcslider/images/jslider.round.plastic.png');
+}
+
+/*BLUE*/
+*html .jslider_blue .jslider-bg .l i,
+*html .jslider_blue .jslider-bg .r i,
+*html .jslider_blue .jslider-bg .v i,
+*html .jslider_blue .jslider-pointer i{
+    background:none;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='skin/adminhtml/default/default/jcslider/images/jslider.blue.png');
+}
