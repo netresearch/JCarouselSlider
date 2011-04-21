@@ -23,56 +23,58 @@ class Netresearch_JCarouselSlider_Block_System_Config_Form_Field_Slidingregulati
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element) {
         $elementId = $element->getHtmlId();
         
-        /*read configurations from system.xml*/
+        /* read configurations from system.xml */
         $configarray = $element->getData('field_config')->asArray();
-        $min = $configarray["parameters"]["min"];
-        $max = $configarray["parameters"]["max"];
-        $step = $configarray["parameters"]["step"];
-        $label = $configarray["parameters"]["label"];
-        $skin = $configarray["parameters"]["skin"];
+        $min   = $configarray['parameters']['min'];
+        $max   = $configarray['parameters']['max'];
+        $step  = $configarray['parameters']['step'];
+        $label = $configarray['parameters']['label'];
+        $skin  = $configarray['parameters']['skin'];
         
-        //default values when theres no definition in system.xml
-        if ($min == "") {
-            $min = "0";
+        /* default values when theres no definition in system.xml */
+        if ($min == '') {
+            $min = '0';
         }
-        if ($max == "") {
-            $max = "10";
+        if ($max == '') {
+            $max = '10';
         }
-        if ($step == "") {
-            $step = "1";
+        if ($step == '') {
+            $step = '1';
         }
         if ($min >= $max){
-            $min = "0";
-            $max = "10";
-            $step = "1";
+            $min = '0';
+            $max = '10';
+            $step = '1';
         }
-        if ($label == "") {
-            $label = "Unit / Maßeinheit";
+        if ($label == '') {
+            $label = 'Unit / Maßeinheit';
         }
         
         //wrong or no entering of a skin
         switch($skin){
-            case "blue":
-            case "plastic":
-            case "round":
-            case "round_plastic":
+            case 'blue':
+            case 'plastic':
+            case 'round':
+            case 'round_plastic':
                 break;
             default:
-                $skin = "plastic";
+                $skin = 'plastic';
         }
 
         //normal Inputfield, wolud hidden by the Slider JS
-        $html = '<input id="'.$elementId.'" name="'.$element->getName().'" value="'.$element->getEscapedValue().'" '.$element->serialize($element->getHtmlAttributes()).'/>'."\n";
+        $html = '<input id="' . $elementId . '" name="' . $element->getName()
+            . '" value="' . $element->getEscapedValue() . '" '
+            . $element->serialize($element->getHtmlAttributes()) . '/>' . "\n";
         
         //additional JS with configurations from system.xml
         $html.= '<script type="text/javascript" charset="utf-8">
-                            if(typeof jQuery == "function") {//jQuery is a function when the jQuery library was loaded
-                                jQuery.noConflict();//get no conflicts with prototype in magento
-                                if(typeof jQuery("#'.$elementId.'").slider == "function") {//jQuery.slider is a function when the jQuerySlider library was loaded
-                                    jQuery("#'.$elementId.'").slider({ from: '.$min.', to: '.$max.', step: '.$step.', dimension: \'&nbsp;'.$label.'\', skin: "'.$skin.'" });
-                                }
+                        if(typeof jQuery == "function") {//jQuery is a function when the jQuery library was loaded
+                            jQuery.noConflict();//get no conflicts with prototype in magento
+                            if(typeof jQuery("#'.$elementId.'").slider == "function") {//jQuery.slider is a function when the jQuerySlider library was loaded
+                                jQuery("#'.$elementId.'").slider({ from: '.$min.', to: '.$max.', step: '.$step.', dimension: \'&nbsp;'.$label.'\', skin: "'.$skin.'" });
                             }
-                     </script>';
+                        }
+                 </script>';
         $html.= $element->getAfterElementHtml();
         return $html;
     }

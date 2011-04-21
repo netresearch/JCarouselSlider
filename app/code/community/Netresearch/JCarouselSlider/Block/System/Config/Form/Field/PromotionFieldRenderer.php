@@ -25,39 +25,40 @@ class Netresearch_JCarouselSlider_Block_System_Config_Form_Field_PromotionFieldR
         $elementId = $element->getHtmlId();
         
         /*read configurations from system.xml*/
-        $configarray = $element->getData('field_config')->asArray();
-        $iframeurl = $configarray["parameters"]["iframeurl"];
-        $iframeheight = $configarray["parameters"]["iframeheight"];
+        $configarray  = $element->getData('field_config')->asArray();
+        $iframeurl    = $configarray['parameters']['iframeurl'];
+        $iframeheight = $configarray['parameters']['iframeheight'];
         
-        //default values when theres no definition in system.xml or a wrong entry
-        if ($iframeheight == "") {
-            $iframeheight = "400px";
-        }else{
-            if (strlen($iframeheight) >= 3){
-                $unitOfLength = substr($iframeheight, -2, 2);//the last both chars build the unit of length
+        /* default values when theres no definition in system.xml or a wrong entry */
+        if ($iframeheight == '') {
+            $iframeheight = '400px';
+        } else {
+            if (strlen($iframeheight) >= 3) {
+                /* the last both chars build the unit of length */
+                $unitOfLength = substr($iframeheight, -2, 2);
                 switch ($unitOfLength){
-                    case "em":
-                    case "ex":
-                    case "px":
-                    case "in":
-                    case "cm":
-                    case "mm":
-                    case "pt":
-                    case "pc":
+                    case 'em':
+                    case 'ex':
+                    case 'px':
+                    case 'in':
+                    case 'cm':
+                    case 'mm':
+                    case 'pt':
+                    case 'pc':
                         break;
                     default:
-                        $iframeheight = "400px";
+                        $iframeheight = '400px';
                 }
-            }else{
-                $iframeheight = "400px";
+            } else {
+                $iframeheight = '400px';
             }
         }
         
-        //open the url in the iframe, when its readable
-        if($iframeurl != "" && @fopen($iframeurl,"r")){
-            $iframe = '<iframe src="'.$iframeurl.'" width="100%" height="100%" name="Netresearch" marginheight="0" marginwidth="0" frameborder="0"></iframe>';
-            $html = '<div style="width:100%;height:'.$iframeheight.'">'.$iframe.'</div>';
-        }else{
+        /* open the url in the iframe, when its readable */
+        if ($iframeurl != '' && @fopen($iframeurl, 'r')) {
+            $iframe = '<iframe src="' . $iframeurl . '" width="100%" height="100%" name="Netresearch" marginheight="0" marginwidth="0" frameborder="0"></iframe>';
+            $html = '<div style="width:100%;height:' . $iframeheight . '">' . $iframe . '</div>';
+        } else {
             $html = $this->getLayout()->createBlock('core/template')->setTemplate('jcslider/promotion/iframe.phtml')->toHtml() ;
             
             /*when you need functions use:
