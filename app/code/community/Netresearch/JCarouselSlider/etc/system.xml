@@ -32,9 +32,9 @@
             <label>JCarousel Slider</label>
             <class>jcarousel-section</class>
             <header_css>jcarousel-header</header_css>
-            <tab>general</tab>
+            <tab>catalog</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>0</sort_order>
+            <sort_order>40</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
